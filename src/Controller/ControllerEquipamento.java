@@ -1,8 +1,7 @@
 package Controller;
 
-import DAO.EquipamentoDAO;
-import Model.Equipamento;
-
+import Model.DAO.EquipamentoDAO;
+import Model.Entidade.Equipamento;
 import java.util.List;
 
 public class ControllerEquipamento implements InterfaceController<Equipamento>{

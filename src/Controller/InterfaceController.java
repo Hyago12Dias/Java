@@ -1,18 +1,11 @@
-/**
- * 
- */
 package Controller;
 
+import java.io.IOException;
 import java.util.List;
-
-/**
- * @author suporte
- *
- */
 
 public interface InterfaceController<T> {
 
-	void adicionar(T t);
+	void adicionar(T t) throws IOException;
 
 	void atualizar(T t, int id);
 

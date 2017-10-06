@@ -1,7 +1,9 @@
 package Controller;
 
-import DAO.ClasseDAO;
-import Model.Classe;
+import Model.DAO.ClasseDAO;
+import Model.Entidade.Classe;
+
+import java.io.IOException;
 import java.util.List;
 
 public class ControllerClasse implements InterfaceController<Classe>{
@@ -9,7 +11,7 @@ public class ControllerClasse implements InterfaceController<Classe>{
 	ClasseDAO classeDao = new ClasseDAO();
 
 	@Override
-	public void adicionar(Classe t) {
+	public void adicionar(Classe t){
 		classeDao.adicionarDAO(t);
 	}
 

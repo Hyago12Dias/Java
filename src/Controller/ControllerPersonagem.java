@@ -1,7 +1,7 @@
 package Controller;
 
-import DAO.PersonagemDAO;
-import Model.Personagem;
+import Model.DAO.PersonagemDAO;
+import Model.Entidade.Personagem;
 import java.util.List;
 
 public class ControllerPersonagem implements InterfaceController<Personagem>{
