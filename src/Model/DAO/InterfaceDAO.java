@@ -1,5 +1,7 @@
 package Model.DAO;
 
+import Model.Entidade.Classe;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,6 +16,7 @@ public interface InterfaceDAO<T> {
 
 	List<T> listarDAO(T t);
 
-	void buscarDAO(T t, int id);
+//	List<Classe> buscarDAO(T t, int id);
 
+	List<Classe> buscarDAO(Classe t);
 }

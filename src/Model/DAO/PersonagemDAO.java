@@ -2,6 +2,7 @@ package Model.DAO;
 
 import java.util.List;
 
+import Model.Entidade.Classe;
 import Model.Entidade.Personagem;
 
 public class PersonagemDAO implements InterfaceDAO<Personagem> {
@@ -33,9 +34,14 @@ public class PersonagemDAO implements InterfaceDAO<Personagem> {
 	}
 
 	@Override
-	public void buscarDAO(Personagem t, int id) {
-		// TODO Auto-generated method stub
-
+	public List<Classe> buscarDAO(Classe t) {
+		return null;
 	}
+
+//	@Override
+//	public List<Classe> buscarDAO(Personagem t, int id) {
+//
+//        return null;
+//    }
 
 }

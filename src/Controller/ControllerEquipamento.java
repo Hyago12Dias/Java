@@ -28,9 +28,12 @@ public class ControllerEquipamento implements InterfaceController<Equipamento>{
 		return equipamentoDAO.listarDAO(t);
 	}
 
-	@Override
-	public void buscar(Equipamento t, int id) {
-		equipamentoDAO.buscarDAO(t, id);
-	}
+//	@Override
+//	public void buscar(Equipamento t, int id) {
+//		equipamentoDAO.buscarDAO(t, id);
+//	}
 
+	@Override
+	public void buscar(Equipamento equipamento) {
+	}
 }

@@ -30,8 +30,12 @@ public class ControllerClasse implements InterfaceController<Classe>{
 		return classeDao.listarDAO(t);
 	}
 
-	@Override
-	public void buscar(Classe t, int id) {
-		classeDao.buscarDAO(t, id);
-	}
+//	@Override
+//	public void buscar(Classe t, int id) {
+//		classeDao.buscarDAO(t, id);
+//	}
+
+    public void buscar(Classe t) {
+		classeDao.buscarDAO(t);
+    }
 }

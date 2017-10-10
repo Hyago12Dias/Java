@@ -16,6 +16,10 @@ public class Teste {
 
     public static void main(String[] args) {
 
+        ControllerClasse add = new ControllerClasse();
+        Classe t = new Classe();
+
+/**
         try {
 
             FileReader reader = new FileReader(new File("C:\\Users\\suporte\\Desktop\\Classe.txt"));
@@ -25,8 +29,6 @@ public class Teste {
 
             code = in.readLine();
             String teste[] = code.split(Pattern.quote(","));
-
-            ControllerClasse add = new ControllerClasse();
 
             for (i = 0; i < code.length(); i++){
                 Classe p = new Classe();
@@ -46,6 +48,29 @@ public class Teste {
         } catch (Exception e) {
 
         }
+**/
+
+
+
+        try {
+            FileWriter arq = new FileWriter("C:\\Users\\suporte\\Desktop\\teste.txt");
+            PrintWriter gravarArq = new PrintWriter(arq);
+            for (int i=0; i<1; i++) {
+                gravarArq.println(t.getNome() + ", ");
+                gravarArq.println(t.getDescricao() + " ");
+                gravarArq.println(String.valueOf(t.getTipo()) + ", ");
+                gravarArq.println(ATRIBUTO.AGILIDADE.getValor() + ", ");
+                gravarArq.println(ATRIBUTO.FORCA.getValor() + ", ");
+                gravarArq.println(ATRIBUTO.INTELIGENCIA.getValor());
+            }
+            arq.close();
+            System.out.println(t);
+        }catch (Exception e){
+
+        }
+
+        add.listar(t);
+
     }
 }
 
