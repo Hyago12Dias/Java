@@ -28,9 +28,12 @@ public class ControllerPersonagem implements InterfaceController<Personagem>{
 		return personagemDAO.listarDAO(t);
 	}
 
-	@Override
-	public void buscar(Personagem t, int id) {
-		personagemDAO.buscarDAO(t, id);
-	}
+//	@Override
+//	public void buscar(Personagem t, int id) {
+//		personagemDAO.buscarDAO(t, id);
+//	}
 
+	@Override
+	public void buscar(Personagem personagem) {
+	}
 }

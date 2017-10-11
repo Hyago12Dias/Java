@@ -1,11 +1,12 @@
 package Model.DAO;
 
 import Model.Entidade.Classe;
-import Model.Entidade.Classe.TIPO;
 import Model.Entidade.Classe.ATRIBUTO;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClasseDAO implements InterfaceDAO<Classe> {
@@ -93,32 +94,109 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
 	@Override
 	public void atualizarDAO(Classe t, int id) {
 
-//		try{
-//
-//			String updateSQL = ""
-//					+ "UPDATE Classe SET "
-//					+ "";
-//
-//		}catch (SQLException e){
-//			e.getMessage();
-//		}
+		try{
 
+			String updateSQL = ""
+					+ "UPDATE \"Classe\" SET "
+					+ "\"Nome\" = ?"
+					+ "\"Descricao\" = ?"
+					+ "\"Tipo\" = ?"
+					+ "\"AtributoAgilidade\" = ?"
+					+ "\"AtributoForca\" = ?"
+					+ "\"AtributoInteligencia\" = ?"
+					+ "WHERE \"ID\" = ?";
+
+			update = ConexaoDAO.getInstance().getConexao().prepareStatement(updateSQL);
+
+			update.setString(1, t.getNome());
+			update.setString(2, t.getDescricao());
+			update.setString(3, String.valueOf(t.getTipo()));
+			update.setObject(4, ATRIBUTO.AGILIDADE.getValor());
+			update.setObject(5, ATRIBUTO.FORCA.getValor());
+			update.setObject(6, ATRIBUTO.INTELIGENCIA.getValor());
+			update.setInt(7, t.getId());
+			update.executeUpdate();
+
+		}catch (SQLException e){
+			e.getMessage();
+		}
 	}
 
 	@Override
 	public void removerDAO(Classe t, int id) {
-		// TODO Auto-generated method stub
+
+		try {
+
+			String deleteSQL = "DELETE FROM \"Classe\" WHERE \"ID\" = ?";
+
+			PreparedStatement delete = ConexaoDAO.getInstance().getConexao().prepareStatement(deleteSQL);
+			delete.setInt(1, t.getId());
+			delete.executeUpdate();
+
+		} catch (SQLException e) {
+			e.getMessage();
+
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Classe> listarDAO(Classe t) {
-		// criar retorno da lista
-		return (List<Classe>) t;
+
+		List<Classe> listaClasse = new ArrayList<>();
+
+		try {
+
+			String exibirSQL = "SELECT * FROM \"Classe\"";
+
+			PreparedStatement exibir = ConexaoDAO.getInstance().getConexao().prepareStatement(exibirSQL);
+
+			ResultSet rs = exibir.executeQuery();
+
+			while (rs.next()) {
+				t.setId(rs.getInt("\"ID\""));
+				t.setNome(rs.getString("\"Nome\""));
+				t.setDescricao(rs.getString("\"Descricao\""));
+				ATRIBUTO.AGILIDADE.setValor(rs.getInt("\"AtributoAgilidade\""));
+				ATRIBUTO.FORCA.setValor(rs.getInt("\"AtributoForca\""));
+				ATRIBUTO.INTELIGENCIA.setValor(rs.getInt("\"AtributoInteligencia\""));
+				listaClasse.add(t);
+			}
+		} catch (SQLException e) {
+			e.getMessage();
+		}
+		return listaClasse;
 	}
 
 	@Override
-	public void buscarDAO(Classe t, int id) {
-		// TODO Auto-generated method stub
+	public List<Classe> buscarDAO(Classe t) {
+
+		List<Classe> listaClasse = new ArrayList();
+
+		try {
+
+			String exibirSQL = "SELECT * FROM \"Classe\" WHERE \"ID\" = ?";
+
+			PreparedStatement exibir = ConexaoDAO.getInstance().getConexao().prepareStatement(exibirSQL);
+			exibir.setInt(1, t.getId());
+
+			ResultSet rs = exibir.executeQuery();
+
+			while (rs.next()) {
+				t.setId(rs.getInt("\"ID\""));
+				t.setNome(rs.getString("\"Nome\""));
+				t.setDescricao(rs.getString("\"Descricao\""));
+				ATRIBUTO.AGILIDADE.setValor(rs.getInt("\"AtributoAgilidade\""));
+				ATRIBUTO.FORCA.setValor(rs.getInt("\"AtributoForca\""));
+				ATRIBUTO.INTELIGENCIA.setValor(rs.getInt("\"AtributoInteligencia\""));
+				listaClasse.add(t);
+			}
+
+		} catch (SQLException e) {
+
+			e.getMessage();
+
+		}
+		return listaClasse;
 	}
 }

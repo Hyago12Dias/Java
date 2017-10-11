@@ -13,7 +13,8 @@ public interface InterfaceController<T> {
 
 	List<T> listar(T t);
 
-	void buscar(T t, int id);
+//	void buscar(T t, int id);
 
+	void buscar(T t);
 }
 
