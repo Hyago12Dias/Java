@@ -1,10 +1,12 @@
 package View;
 
 import Controller.ControllerClasse;
+import Model.DAO.ClasseDAO;
 import Model.Entidade.Classe;
 import Model.Entidade.Classe.TIPO;
 import Model.Entidade.Classe.ATRIBUTO;
 import java.io.*;
+import java.util.List;
 import java.util.regex.Pattern;
 
 
@@ -13,13 +15,17 @@ public class Teste {
     private static BufferedReader in;
     private static String code;
 
-
     public static void main(String[] args) {
 
         ControllerClasse add = new ControllerClasse();
         Classe t = new Classe();
+        ClasseDAO listar = new ClasseDAO();
 
 /**
+ *
+ * Inserção no banco a partir de um arquivo TXT
+ *
+
         try {
 
             FileReader reader = new FileReader(new File("C:\\Users\\suporte\\Desktop\\Classe.txt"));
@@ -44,14 +50,25 @@ public class Teste {
                 code = in.readLine();
                 teste = code.split(Pattern.quote(","));
             }
-
         } catch (Exception e) {
 
         }
 **/
 
+        List<Classe> listaClasse = listar.listarDAO(t);
 
+        int x;
+        for (x = 0; x < 5;x++){
+            System.out.println(listaClasse);
+        }
 
+//        for (Classe classe : listaClasse){
+//            System.out.println(classe.getId());
+//            System.out.println(classe.getNome());
+//            System.out.println(classe.getTipo());
+//        }
+
+/**
         try {
             FileWriter arq = new FileWriter("C:\\Users\\suporte\\Desktop\\teste.txt");
             PrintWriter gravarArq = new PrintWriter(arq);
@@ -68,8 +85,9 @@ public class Teste {
         }catch (Exception e){
 
         }
+**/
 
-        add.listar(t);
+//        add.listar(t);
 
     }
 }

@@ -73,8 +73,11 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
 		}catch (SQLException e){
 			e.getMessage();
 		}
+/**
+ *
+ * Inserção em um arquivo TXT
+ *
 
-		/**
 		FileWriter arq = new FileWriter("C:\\Users\\suporte\\Desktop\\teste.txt");
 		PrintWriter gravarArq = new PrintWriter(arq);
 		for (int i=0; i<1; i++) {
@@ -88,7 +91,7 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
 
 		arq.close();
 		System.out.println(t);
-		 **/
+**/
 	}
 
 	@Override
@@ -157,9 +160,9 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
 				t.setId(rs.getInt("\"ID\""));
 				t.setNome(rs.getString("\"Nome\""));
 				t.setDescricao(rs.getString("\"Descricao\""));
-				ATRIBUTO.AGILIDADE.setValor(rs.getInt("\"AtributoAgilidade\""));
-				ATRIBUTO.FORCA.setValor(rs.getInt("\"AtributoForca\""));
-				ATRIBUTO.INTELIGENCIA.setValor(rs.getInt("\"AtributoInteligencia\""));
+//				ATRIBUTO.AGILIDADE.setValor(rs.getInt("\"AtributoAgilidade\""));
+//				ATRIBUTO.FORCA.setValor(rs.getInt("\"AtributoForca\""));
+//				ATRIBUTO.INTELIGENCIA.setValor(rs.getInt("\"AtributoInteligencia\""));
 				listaClasse.add(t);
 			}
 		} catch (SQLException e) {
