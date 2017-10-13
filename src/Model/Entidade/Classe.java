@@ -51,6 +51,7 @@ public class Classe {
 	private String nome;
 	private String descricao;
 	TIPO tipo;
+	ATRIBUTO att;
 
 	public int getId() {
 		return id;
@@ -82,11 +83,12 @@ public class Classe {
 
 	@Override
 	public String toString() {
-		return "Classe [Nome = " + getNome() +
+		return "Classe ID = " + getId() +
+				", Nome = " + getNome() +
 				", Descrição = " + getDescricao() +
 				", Tipo = " + getTipo() +
 				", Agilidade = " + ATRIBUTO.AGILIDADE.getValor() +
 				", Força = " + ATRIBUTO.FORCA.getValor() +
-				", Inteligencia = " + ATRIBUTO.INTELIGENCIA.getValor() + "]";
+				", Inteligencia = " + ATRIBUTO.INTELIGENCIA.getValor();
 	}
 }
