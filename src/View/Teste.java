@@ -18,7 +18,7 @@ public class Teste {
     public static void main(String[] args) {
 
         ControllerClasse add = new ControllerClasse();
-        Classe t = new Classe();
+        Classe classe = new Classe();
         ClasseDAO listar = new ClasseDAO();
 
 /**
@@ -54,19 +54,10 @@ public class Teste {
 
         }
 **/
-
-        List<Classe> listaClasse = listar.listarDAO(t);
-
-        int x;
-        for (x = 0; x < 5;x++){
-            System.out.println(listaClasse);
+        List<Classe> listaClasse = add.listar(classe);
+        for (Classe item : listaClasse) {
+            System.out.println(item);
         }
-
-//        for (Classe classe : listaClasse){
-//            System.out.println(classe.getId());
-//            System.out.println(classe.getNome());
-//            System.out.println(classe.getTipo());
-//        }
 
 /**
         try {
