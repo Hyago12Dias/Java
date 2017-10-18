@@ -5,14 +5,17 @@ public class Classe {
 	public enum TIPO {
 		MELEE("MELEE"), RANGE("RANGE");
 
-		public String valor;
+		private String valor;
 
 		TIPO(String valor){
 			this.valor = valor;
 		}
-		@Override
-		public String toString() {
+
+		public String getValor() {
 			return valor;
+		}
+		public void setValor(String valor) {
+			this.valor = valor;
 		}
 	}
 
@@ -21,14 +24,13 @@ public class Classe {
 
 		private double valor;
 
-		ATRIBUTO(double att) {
-			valor = att;
+		ATRIBUTO(double valor) {
+			this.valor = valor;
 		}
 
 		public double getValor() {
 			return valor;
 		}
-
 		public void setValor(double valor) {
 			this.valor = valor;
 		}
@@ -38,10 +40,10 @@ public class Classe {
 		
 	}
 	
-	public Classe(String nome, String descricao, TIPO tipo, double agilidade, double forca, double inteligencia) {
+	public Classe(String nome, String descricao, String tipo, double agilidade, double forca, double inteligencia) {
 		this.nome = nome;
 		this.descricao = descricao;
-		this.tipo = tipo;
+		TIPO.values().equals(tipo);
 		ATRIBUTO.AGILIDADE.setValor(agilidade);
         ATRIBUTO.FORCA.setValor(forca);
 		ATRIBUTO.INTELIGENCIA.setValor(inteligencia);
@@ -51,7 +53,6 @@ public class Classe {
 	private String nome;
 	private String descricao;
 	TIPO tipo;
-	ATRIBUTO att;
 
 	public int getId() {
 		return id;

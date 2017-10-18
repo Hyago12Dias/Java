@@ -13,7 +13,7 @@ public class Banco {
                         "e muito furtivos, se o ladinos não estão roubando algo,  " +
                         "estão trabalhando numa busca por tesouro, " +
                         "que antes de repartir os lucros com seus" +
-                        " \"parceiros\" ele já os roubou.", TIPO.MELEE, 25, 15, 10);
+                        " \"parceiros\" ele já os roubou.", "MELEE", 25, 15, 10);
 
         ControllerClasse dd = new ControllerClasse();
         dd.adicionar(p);
