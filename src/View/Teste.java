@@ -17,49 +17,61 @@ public class Teste {
 
     public static void main(String[] args) {
 
-        ControllerClasse add = new ControllerClasse();
+        ControllerClasse teste = new ControllerClasse();
         Classe classe = new Classe();
-        ClasseDAO listar = new ClasseDAO();
 
 /**
  *
  * Inserção no banco a partir de um arquivo TXT
  *
 
+
         try {
 
-            FileReader reader = new FileReader(new File("C:\\Users\\suporte\\Desktop\\Classe.txt"));
+            FileReader reader = new FileReader(new File("C:\\Users\\suporte\\Desktop\\naotemoqfazer.txt"));
             in = new BufferedReader(reader);
             int i;
             int x;
 
             code = in.readLine();
-            String teste[] = code.split(Pattern.quote(","));
+            String linha[] = code.split(Pattern.quote(","));
 
             for (i = 0; i < code.length(); i++){
                 Classe p = new Classe();
-                for (x = 0; x < teste.length; x++){
-                    p.setNome(teste[0]);
-                    p.setDescricao(teste[1]);
-                    p.setTipo(TIPO.valueOf(String.valueOf(teste[2])));
-                    ATRIBUTO.AGILIDADE.setValor(Double.parseDouble(teste[3]));
-                    ATRIBUTO.FORCA.setValor(Double.parseDouble(teste[4]));
-                    ATRIBUTO.INTELIGENCIA.setValor(Double.parseDouble(teste[5]));
+                for (x = 0; x < linha.length; x++){
+                    p.setNome(linha[0]);
+                    p.setDescricao(linha[1]);
+
+                    p.setTipo(TIPO.valueOf(linha[2]));
+
+                    ATRIBUTO.AGILIDADE.setValor(Double.parseDouble(linha[3]));
+                    ATRIBUTO.FORCA.setValor(Double.parseDouble(linha[4]));
+                    ATRIBUTO.INTELIGENCIA.setValor(Double.parseDouble(linha[5]));
                 }
-                add.adicionar(p);
+                teste.adicionar(p);
                 code = in.readLine();
-                teste = code.split(Pattern.quote(","));
+                linha = code.split(Pattern.quote(","));
             }
         } catch (Exception e) {
 
         }
-**/
-        List<Classe> listaClasse = add.listar(classe);
-        for (Classe item : listaClasse) {
-            System.out.println(item);
-        }
+ **/
 
 /**
+ *
+ * Listar: Retorna tudo que está no banco
+ *
+ **/
+        List<Classe> listaClasse = teste.listar(classe);
+        for (Classe item : listaClasse) {
+            System.out.println(item.getTipo());
+        }
+
+
+/**
+ *
+ * Listar: Inserção em um arquivo TXT
+ *
         try {
             FileWriter arq = new FileWriter("C:\\Users\\suporte\\Desktop\\teste.txt");
             PrintWriter gravarArq = new PrintWriter(arq);
@@ -76,9 +88,25 @@ public class Teste {
         }catch (Exception e){
 
         }
-**/
+
+
+    try {
+        List<Classe> listaClasse = teste.listar(classe);
+        FileWriter arq = new FileWriter("C:\\Users\\suporte\\Desktop\\teste.txt");
+        PrintWriter gravarArq = new PrintWriter(arq);
+        for (Classe item : listaClasse) {
+            gravarArq.println(item);
+            System.out.println(item);
+        }
+        arq.close();
+    }catch (Exception e){
+
+    }
+ **/
+
 
 //        add.listar(t);
+
 
     }
 }
@@ -87,6 +115,5 @@ public class Teste {
  code = new String (in.readLine().getBytes(), "UTF8");
  System.out.println(System.getProperty("file.encoding"));
  System.out.println(code);
-
  code = new String (in.readLine().);
 **/
