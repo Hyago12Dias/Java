@@ -1,8 +1,6 @@
 package Model.DAO;
 
 import Model.Entidade.Classe;
-import Model.Entidade.Classe.ATRIBUTO;
-import Model.Entidade.Classe.TIPO;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,7 +26,7 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
         try {
 
             String createSQL = ""
-                    + "CREATE TABLE IF NOT EXISTS \"TESTE\" ("
+                    + "CREATE TABLE IF NOT EXISTS \"TESTE2\" ("
                     + "\"ID\" serial primary key not null,"
                     + "\"Nome\" char (20),"
                     + "\"Descricao\" char(500),"
@@ -43,7 +41,7 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
             create.close();
 
             String insertSQL = ""
-                    + "INSERT INTO \"TESTE\" ("
+                    + "INSERT INTO \"TESTE2\" ("
 //					+ "\"ID\","
                     + "\"Nome\","
                     + "\"Descricao\","
@@ -67,10 +65,10 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
 //			insert.setInt(1, t.getId());
             insert.setString(1, t.getNome());
             insert.setString(2, t.getDescricao());
-            insert.setString(3, t.getTipo().getValor());
-            insert.setObject(4, ATRIBUTO.AGILIDADE.getValor());
-            insert.setObject(5, ATRIBUTO.FORCA.getValor());
-            insert.setObject(6, ATRIBUTO.INTELIGENCIA.getValor());
+            insert.setString(3, t.getTipo());
+            insert.setObject(4, t.getAtributo());
+            insert.setObject(5, t.getAtributo());
+            insert.setObject(6, t.getAtributo());
             insert.executeUpdate();
             insert.close();
 
@@ -108,7 +106,7 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
         try {
 
             String updateSQL = ""
-                    + "UPDATE \"TESTE\" SET "
+                    + "UPDATE \"TESTE2\" SET "
                     + "\"Nome\" = ?"
                     + "\"Descricao\" = ?"
                     + "\"Tipo\" = ?"
@@ -121,11 +119,11 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
 
             update.setString(1, t.getNome());
             update.setString(2, t.getDescricao());
-            update.setString(3, t.getTipo().getValor());
-//            update.setString(3, String.valueOf(t.getTipo()));
-            update.setObject(4, ATRIBUTO.AGILIDADE.getValor());
-            update.setObject(5, ATRIBUTO.FORCA.getValor());
-            update.setObject(6, ATRIBUTO.INTELIGENCIA.getValor());
+            update.setString(3, t.getTipo());
+            update.setString(3, t.getTipo());
+//            update.setObject(4, ATRIBUTO.AGILIDADE.getValor());
+//            update.setObject(5, ATRIBUTO.FORCA.getValor());
+//            update.setObject(6, ATRIBUTO.INTELIGENCIA.getValor());
             update.setInt(7, t.getId());
             update.executeUpdate();
 
@@ -139,7 +137,7 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
 
         try {
 
-            String deleteSQL = "DELETE FROM \"TESTE\" WHERE \"ID\" = ?";
+            String deleteSQL = "DELETE FROM \"TESTE2\" WHERE \"ID\" = ?";
 
             PreparedStatement delete = ConexaoDAO.getInstance().getConexao().prepareStatement(deleteSQL);
             delete.setInt(1, t.getId());
@@ -158,7 +156,7 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
 
         try {
 
-            String exibirSQL = "SELECT * FROM \"TESTE\"";
+            String exibirSQL = "SELECT * FROM \"TESTE2\"";
 
             PreparedStatement exibir = ConexaoDAO.getInstance().getConexao().prepareStatement(exibirSQL);
 
@@ -169,12 +167,10 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
                 classe.setId(rs.getInt("ID"));
                 classe.setNome(rs.getString("Nome"));
                 classe.setDescricao(rs.getString("Descricao"));
-
-                classe.setTipo(TIPO.valueOf(rs.getString("Tipo")));
-                
-                ATRIBUTO.AGILIDADE.setValor(rs.getInt("AtributoAgilidade"));
-                ATRIBUTO.FORCA.setValor(rs.getInt("AtributoForca"));
-                ATRIBUTO.INTELIGENCIA.setValor(rs.getInt("AtributoInteligencia"));
+                classe.setTipo(rs.getString("Tipo"));
+//                ATRIBUTO.AGILIDADE.setValor(rs.getInt("AtributoAgilidade"));
+//                ATRIBUTO.FORCA.setValor(rs.getInt("AtributoForca"));
+//                ATRIBUTO.INTELIGENCIA.setValor(rs.getInt("AtributoInteligencia"));
                 listaClasse.add(classe);
             }
         } catch (SQLException e) {
@@ -190,7 +186,7 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
 
         try {
 
-            String exibirSQL = "SELECT * FROM \"TESTE\" WHERE \"ID\" = ?";
+            String exibirSQL = "SELECT * FROM \"TESTE2\" WHERE \"ID\" = ?";
 
             PreparedStatement exibir = ConexaoDAO.getInstance().getConexao().prepareStatement(exibirSQL);
             exibir.setInt(1, t.getId());
@@ -201,9 +197,9 @@ public class ClasseDAO implements InterfaceDAO<Classe> {
                 t.setId(rs.getInt("\"ID\""));
                 t.setNome(rs.getString("\"Nome\""));
                 t.setDescricao(rs.getString("\"Descricao\""));
-                ATRIBUTO.AGILIDADE.setValor(rs.getInt("\"AtributoAgilidade\""));
-                ATRIBUTO.FORCA.setValor(rs.getInt("\"AtributoForca\""));
-                ATRIBUTO.INTELIGENCIA.setValor(rs.getInt("\"AtributoInteligencia\""));
+//                ATRIBUTO.AGILIDADE.setValor(rs.getInt("\"AtributoAgilidade\""));
+//                ATRIBUTO.FORCA.setValor(rs.getInt("\"AtributoForca\""));
+//                ATRIBUTO.INTELIGENCIA.setValor(rs.getInt("\"AtributoInteligencia\""));
                 listaClasse.add(t);
             }
 

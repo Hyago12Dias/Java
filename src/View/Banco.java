@@ -2,7 +2,6 @@ package View;
 
 import Controller.ControllerClasse;
 import Model.Entidade.Classe;
-import Model.Entidade.Classe.TIPO;
 
 import java.io.IOException;
 

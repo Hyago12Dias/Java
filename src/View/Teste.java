@@ -1,12 +1,9 @@
 package View;
 
 import Controller.ControllerClasse;
-import Model.DAO.ClasseDAO;
 import Model.Entidade.Classe;
-import Model.Entidade.Classe.TIPO;
-import Model.Entidade.Classe.ATRIBUTO;
 import java.io.*;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 
@@ -62,10 +59,10 @@ public class Teste {
  * Listar: Retorna tudo que está no banco
  *
  **/
-        List<Classe> listaClasse = teste.listar(classe);
-        for (Classe item : listaClasse) {
-            System.out.println(item.getTipo());
-        }
+//        List<Classe> listaClasse = teste.listar(classe);
+//        for (Classe item : listaClasse) {
+//            System.out.println(item.getTipo());
+//        }
 
 
 /**

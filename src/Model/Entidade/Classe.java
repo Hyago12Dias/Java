@@ -1,58 +1,28 @@
 package Model.Entidade;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Classe {
 
-	public enum TIPO {
-		MELEE("MELEE"), RANGE("RANGE");
-
-		private String valor;
-
-		TIPO(String valor){
-			this.valor = valor;
-		}
-
-		public String getValor() {
-			return valor;
-		}
-		public void setValor(String valor) {
-			this.valor = valor;
-		}
-	}
-
-	public enum ATRIBUTO {
-		FORCA(0.0), AGILIDADE(0.0), INTELIGENCIA(0.0);
-
-		private double valor;
-
-		ATRIBUTO(double valor) {
-			this.valor = valor;
-		}
-
-		public double getValor() {
-			return valor;
-		}
-		public void setValor(double valor) {
-			this.valor = valor;
-		}
-	}
-	
 	public Classe() {
 		
 	}
 	
-	public Classe(String nome, String descricao, String tipo, double agilidade, double forca, double inteligencia) {
+	public Classe(String nome, String descricao, String tipo, int agilidade, int forca, int inteligencia) {
 		this.nome = nome;
 		this.descricao = descricao;
-		TIPO.values().equals(tipo);
-		ATRIBUTO.AGILIDADE.setValor(agilidade);
-        ATRIBUTO.FORCA.setValor(forca);
-		ATRIBUTO.INTELIGENCIA.setValor(inteligencia);
+		this.tipo = tipo;
+		Atributo.add(agilidade);
+		Atributo.add(forca);
+		Atributo.add(inteligencia);
 	}
 
 	private int id;
 	private String nome;
 	private String descricao;
-	TIPO tipo;
+	String tipo;
+	Set<Integer> Atributo = new HashSet<>();
 
 	public int getId() {
 		return id;
@@ -75,11 +45,18 @@ public class Classe {
 		this.descricao = descricao;
 	}
 
-	public TIPO getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
-	public void setTipo(TIPO tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public Set<Integer> getAtributo() {
+		return Atributo;
+	}
+	public void setAtributo(Set<Integer> atributo) {
+		Atributo = atributo;
 	}
 
 	@Override
@@ -88,8 +65,8 @@ public class Classe {
 				", Nome = " + getNome() +
 				", Descrição = " + getDescricao() +
 				", Tipo = " + getTipo() +
-				", Agilidade = " + ATRIBUTO.AGILIDADE.getValor() +
-				", Força = " + ATRIBUTO.FORCA.getValor() +
-				", Inteligencia = " + ATRIBUTO.INTELIGENCIA.getValor();
+				", Agilidade = " + Atributo +
+				", Força = " + Atributo +
+				", Inteligencia = " + Atributo;
 	}
 }
